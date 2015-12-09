@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+  <display-name>Mondrian</display-name>
+  <description/>
+
+  <!-- optional? now in JPivot by default  -->
+  <context-param>
+    <param-name>contextFactory</param-name>
+    <param-value>com.tonbeller.wcf.controller.RequestContextFactoryImpl</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>connectString</param-name>
+    <param-value>@mondrian.webapp.connectString@</param-value>
+  </context-param>
+
+  <!-- resources initializer -->
+  <listener>
+    <listener-class>com.tonbeller.tbutils.res.ResourcesFactoryContextListener</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>MondrianXmlaServlet</servlet-name>
+    <servlet-class>mondrian.xmla.impl.DynamicDatasourceXmlaServlet</servlet-class>
+    <init-param>
+      <param-name>DataSourcesConfig</param-name>
+      <param-value>file:/data/mondrian/datasources.xml</param-value>
+    </init-param>
+    <!--
+      This is an example of how to add a callback to the XML/A servlet.
+      It must implement mondrian.xmla.XmlaRequestCallback.
+    <init-param>
+      <param-name>Callbacks</param-name>
+      <param-value>com.example.MyCallbackClass;com.example.SomeOtherCallback</param-value>
+    </init-param>
+    -->
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MondrianXmlaServlet</servlet-name>
+    <url-pattern>/xmla</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <!-- Cube Management REST API -->
+  <servlet>
+    <servlet-name>Cube Management Web Application</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <load-on-startup>1</load-on-startup>    
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Cube Management Web Application</servlet-name>
+    <url-pattern>/cubecrudapi/*</url-pattern>
+  </servlet-mapping>
+
+
+</web-app>

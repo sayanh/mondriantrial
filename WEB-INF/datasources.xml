@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<DataSources>
+  <DataSource>
+    <DataSourceName>Provider=Mondrian;DataSource=MondrianFoodMart;</DataSourceName>
+    <DataSourceDescription>Mondrian FoodMart Data Warehouse</DataSourceDescription>
+    <URL>http://localhost:8080/mondrian/xmla</URL>
+    <DataSourceInfo>
+    JdbcDrivers=org.postgresql.Driver;Provider=Mondrian;Jdbc=jdbc:postgresql://pg1-production.cszlxyfyzhdj.eu-west-1.rds.amazonaws.com/metoda_etl_production?user=production&#38;password=sdiWERFSER423;Catalog=file:/data/mondrian/queries/conti.xml;</DataSourceInfo>
+    <ProviderName>Mondrian</ProviderName>
+    <ProviderType>MDP</ProviderType>
+    <AuthenticationMode>Unauthenticated</AuthenticationMode>
+    <Catalogs>
+      <Catalog name="dakine">
+         <DataSourceInfo>JdbcDrivers=org.postgresql.Driver;Provider=Mondrian;Jdbc=jdbc:postgresql://pg1-production.cszlxyfyzhdj.eu-west-1.rds.amazonaws.com/metoda_etl_production?user=production&#38;password=sdiWERFSER423;Catalog=file:/data/mondrian/queries/dakine.xml;</DataSourceInfo>
+        <Definition>/data/mondrian/queries/dakine.xml</Definition>
+      </Catalog>
+
+      <Catalog name="sigma_foto">
+         <DataSourceInfo>JdbcDrivers=org.postgresql.Driver;Provider=Mondrian;Jdbc=jdbc:postgresql://pg1-production.cszlxyfyzhdj.eu-west-1.rds.amazonaws.com/metoda_etl_org_sigma_foto?user=production&#38;password=sdiWERFSER423;Catalog=file:/data/mondrian/queries/sigma_foto.xml;</DataSourceInfo>
+        <Definition>/data/mondrian/queries/sigma_foto.xml</Definition>
+      </Catalog> 
+      <Catalog name="continental">
+        <DataSourceInfo>JdbcDrivers=org.postgresql.Driver;Provider=Mondrian;Jdbc=jdbc:postgresql://pg1-production.cszlxyfyzhdj.eu-west-1.rds.amazonaws.com/metoda_etl_production?user=production&#38;password=sdiWERFSER423;Catalog=file:/data/mondrian/queries/conti.xml;</DataSourceInfo>
+       <Definition>/data/mondrian/queries/conti.xml</Definition>
+      </Catalog>
+    </Catalogs>
+
+  </DataSource>
+
+</DataSources>
